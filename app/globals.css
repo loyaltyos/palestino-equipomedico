@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #f8fafc;
+  color: #132638;
+}
+
+::selection { background: #b9e2ff; color: #103f66; }
+
+@layer components {
+  .section-kicker { @apply text-sm font-bold uppercase tracking-[0.18em] text-medical-600; }
+  .section-title { @apply mt-3 text-3xl font-semibold text-clinical-900 sm:text-4xl; }
+  .form-field { @apply w-full rounded-md border border-clinical-200 px-4 py-3 font-normal outline-none transition focus:border-medical-500 focus:ring-4 focus:ring-medical-100; }
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+.medical-grid {
+  background-image:
+    linear-gradient(rgba(15, 139, 220, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 139, 220, 0.08) 1px, transparent 1px);
+  background-size: 34px 34px;
+}
