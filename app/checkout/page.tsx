@@ -6,7 +6,7 @@ export default function CheckoutPage() {
     <>
       <PageHero
         title="Checkout"
-        description="Completa tus datos para que un asesor confirme disponibilidad, entrega y cierre de compra."
+        description="Completa tus datos de entrega y realiza tu pago de forma segura."
       />
       <CheckoutView />
     </>
