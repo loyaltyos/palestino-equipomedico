@@ -1,6 +1,7 @@
 import { after, NextRequest, NextResponse } from "next/server";
 import {
   logWebhookDiagnostic,
+  normalizeWebhookDigest,
   normalizeWebhookPublicKey,
   parseWebhookEvent,
   processWebhookEvent,
@@ -19,15 +20,19 @@ export function GET() {
 }
 
 export async function POST(request: NextRequest) {
-  const digest = request.headers.get("digest");
+  const digestHeader = request.headers.get("digest");
   const rawBody = await request.text();
+  const digest = normalizeWebhookDigest(digestHeader);
   const publicKey = normalizeWebhookPublicKey(process.env.CONEKTA_WEBHOOK_SECRET);
   const signatureValid = Boolean(
-    digest && publicKey.formatValid && verifyWebhook(rawBody, digest, publicKey.normalized),
+    digest.signature &&
+    publicKey.formatValid &&
+    verifyWebhook(rawBody, digest.signature, publicKey.normalized),
   );
   const event = parseWebhookEvent(rawBody);
   logWebhookDiagnostic({
-    digest_present: Boolean(digest),
+    digest_present: Boolean(digestHeader),
+    digest_format: digest.format,
     public_key_present: publicKey.present,
     public_key_format_valid: publicKey.formatValid,
     signature_valid: signatureValid,
