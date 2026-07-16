@@ -15,10 +15,19 @@ export const categories = [
   "Mobiliario médico",
   "Exploración clínica",
   "Rehabilitación",
-  "Insumos médicos"
+  "Insumos médicos",
+  "Prueba"
 ];
 
 export const products: Product[] = [
+  {
+    id: "compra-minima-prueba",
+    name: "Compra mínima de prueba",
+    category: "Prueba",
+    price: 100,
+    image: "/products/photos/insumos.webp",
+    description: "Producto habilitado para validar el flujo de compra en producción."
+  },
   {
     id: "cama-hospitalaria-electrica",
     name: "Cama hospitalaria eléctrica de 3 posiciones",
