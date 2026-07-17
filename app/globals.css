@@ -36,3 +36,14 @@ select {
     linear-gradient(90deg, rgba(15, 139, 220, 0.08) 1px, transparent 1px);
   background-size: 34px 34px;
 }
+
+#conekta-checkout,
+#conekta-checkout iframe {
+  width: 100% !important;
+  max-width: 100%;
+}
+
+#conekta-checkout iframe {
+  display: block;
+  border: 0;
+}
